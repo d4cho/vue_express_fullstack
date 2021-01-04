@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/api/posts/';
+const url = 'api/posts/';
 
 class PostService {
   // Get Posts
   static async getPosts() {
+    const response = await axios.get(url);
     try {
-      const response = await axios.get(url);
       return response.data.map((post) => ({
         ...post,
         createdAt: new Date(post.createdAt)
